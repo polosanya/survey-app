@@ -7,6 +7,7 @@ type Props = {
     params: {
         stepName: string;
     };
+    searchParams: { [key: string]: string | string[] | undefined };
 };
 
 const surveyConfig = mainSurvey as SurveyConfig;
