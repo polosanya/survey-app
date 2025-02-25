@@ -13,11 +13,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({
-    params,
-}: {
-    params: { stepName: string }
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { stepName: string } }): Promise<Metadata> {
     const { stepName } = params;
     const step = surveyConfig.steps[stepName];
 
@@ -26,11 +22,11 @@ export async function generateMetadata({
     };
 }
 
-export default function SurveyStepPage({
-    params,
-}: {
-    params: { stepName: string }
-}) {
+interface PageProps {
+    params: { stepName: string };
+}
+
+const SurveyStepPage = async ({ params }: PageProps) => {
     const { stepName } = params;
 
     if (stepName === 'summary') {
@@ -51,3 +47,5 @@ export default function SurveyStepPage({
         </div>
     );
 }
+
+export default SurveyStepPage;
