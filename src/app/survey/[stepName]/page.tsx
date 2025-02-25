@@ -23,11 +23,11 @@ export async function generateMetadata({ params }: { params: Promise<{ stepName:
 }
 
 type Props = {
-    params: { stepName: string };
+    params: Promise<{ stepName: string }>;
 };
 
-export default function SurveyStepPage({ params }: Props) {
-    const { stepName } = params;
+export default async function SurveyStepPage({ params }: Props) {
+    const { stepName } = await params;
 
     if (stepName === 'summary') {
         // return <SurveyResults />;
