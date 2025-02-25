@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import mainSurvey from '@/config/surveys/main-survey.json';
 import { notFound } from 'next/navigation';
 import { SurveyConfig } from '@/types/survey';
+import SingleChoiceStep from '@/steps/SingleChoiceStep';
 
 const surveyConfig = mainSurvey as SurveyConfig;
 
@@ -43,7 +44,7 @@ export default async function SurveyStepPage({ params }: Props) {
     return (
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
             {/* <SurveyQuestion step={step} /> */}
-            QUESTION {stepName}
+            <SingleChoiceStep step={step} />
         </div>
     );
 }

@@ -19,6 +19,7 @@ export const surveySlice = createSlice({
             const existingAnswerIndex = state.answers.findIndex(
                 (answer) => answer.stepId === action.payload.stepId
             );
+
             if (existingAnswerIndex !== -1) {
                 state.answers[existingAnswerIndex] = action.payload;
             } else {
