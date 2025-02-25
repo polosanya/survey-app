@@ -20,7 +20,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
     const { stepName } = params;
     const step = surveyConfig.steps[stepName];
 
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
-export default function SurveyStepPage({ params }: Props) {
+export default async function SurveyStepPage({ params, searchParams }: Props) {
     const { stepName } = params;
 
     if (stepName === 'summary') {
