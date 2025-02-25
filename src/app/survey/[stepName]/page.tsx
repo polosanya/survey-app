@@ -3,13 +3,6 @@ import mainSurvey from '@/config/surveys/main-survey.json';
 import { notFound } from 'next/navigation';
 import { SurveyConfig } from '@/types/survey';
 
-type Props = {
-    params: {
-        stepName: string;
-    };
-    searchParams: { [key: string]: string | string[] | undefined };
-};
-
 const surveyConfig = mainSurvey as SurveyConfig;
 
 export async function generateStaticParams() {
@@ -20,7 +13,11 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+    params,
+}: {
+    params: { stepName: string }
+}): Promise<Metadata> {
     const { stepName } = params;
     const step = surveyConfig.steps[stepName];
 
@@ -29,7 +26,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
-export default async function SurveyStepPage({ params }: Props) {
+export default function SurveyStepPage({
+    params,
+}: {
+    params: { stepName: string }
+}) {
     const { stepName } = params;
 
     if (stepName === 'summary') {
