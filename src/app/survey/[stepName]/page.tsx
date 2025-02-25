@@ -5,7 +5,7 @@ import { SurveyConfig } from '@/types/survey';
 
 const surveyConfig = mainSurvey as SurveyConfig;
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
     return [
         ...Object.keys(surveyConfig.steps)
     ].map((stepName) => ({
@@ -22,11 +22,12 @@ export async function generateMetadata({ params }: { params: { stepName: string 
     };
 }
 
-interface PageProps {
+type Props = {
     params: { stepName: string };
-}
+    searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-const SurveyStepPage = async ({ params }: PageProps) => {
+export default function SurveyStepPage({ params }: Props) {
     const { stepName } = params;
 
     if (stepName === 'summary') {
@@ -47,5 +48,3 @@ const SurveyStepPage = async ({ params }: PageProps) => {
         </div>
     );
 }
-
-export default SurveyStepPage;
