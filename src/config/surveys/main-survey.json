@@ -1,0 +1,56 @@
+{
+  "id": "main-survey",
+  "name": "Main Survey",
+  "initialStep": "gender",
+  "steps": {
+    "gender": {
+      "id": "gender",
+      "type": "single-choice",
+      "question": "Select your gender:",
+      "options": [
+        {
+          "id": "male",
+          "text": "Male",
+          "nextStep": "status"
+        },
+        {
+          "id": "female",
+          "text": "Female",
+          "nextStep": "status"
+        }
+      ]
+    },
+    "status": {
+      "id": "status",
+      "type": "single-choice",
+      "question": "So we can get to know you better, tell us about your relationship status.",
+      "options": [
+        {
+          "id": "single",
+          "text": "Single",
+          "nextStep": "parent"
+        },
+        {
+          "id": "relationship",
+          "text": "In a relationship",
+          "nextStep": "parent"
+        }
+      ]
+    },
+    "parent": {
+      "id": "parent",
+      "type": "single-choice",
+      "question": "Are you a {status === 'single' && 'Single'} parent?",
+      "options": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ]
+    }
+  }
+}
