@@ -1,13 +1,13 @@
 .option {
   display: inline-block;
   width: 100%;
-  padding: 16px 32px;
-  font-size: 16px;
+  padding: 12px 16px;
+  font-size: 14px;
   font-weight: 400;
   font-family: var(--font-open-sans);
-  color: #000;
+  color: var(--c-text-secondary);
   background: #eaeef7;
-  border-radius: 8px;
+  border-radius: 16px;
   border: 1px solid #e0e0e0;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

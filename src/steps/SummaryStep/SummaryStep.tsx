@@ -6,8 +6,10 @@ import { RootState } from '@/store';
 import { resetSurvey } from '@/store/surveySlice';
 import styles from './SummaryStep.module.scss';
 import { SurveyConfig } from '@/types/survey';
+import { useTextInterpolation } from '@/hooks/useTextInterpolation';
 
 const SurveySummary = ({ surveyConfig }: { surveyConfig: SurveyConfig }) => {
+  const { t } = useTextInterpolation();
   const dispatch = useDispatch();
   const router = useRouter();
   const answers = useSelector((state: RootState) => state.survey.answers);
@@ -15,7 +17,7 @@ const SurveySummary = ({ surveyConfig }: { surveyConfig: SurveyConfig }) => {
   const getQuestionText = (stepId: string) => {
     const step = surveyConfig.steps[stepId];
 
-    return step?.question;
+    return t(step?.question || '');
   };
 
   const getAnswerLabel = (stepId: string, answerId: string) => {

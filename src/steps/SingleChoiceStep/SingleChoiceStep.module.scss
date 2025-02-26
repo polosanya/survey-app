@@ -1,13 +1,23 @@
 .wrapper {
   display: flex;
+  max-width: 360px;
+  padding: 20px;
+  margin: 0 auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 30px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--c-text-main);
 }
 
 .options {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 16px;
 }

@@ -26,7 +26,7 @@ const SingleChoiceStep = ({ step }: { step: SurveyStep }) => {
   };
   return (
     <div className={styles.wrapper}>
-      <h1>{t(question)}</h1>
+      <h1 className={styles.title}>{t(question)}</h1>
 
       {description && <h2>{t(description)}</h2>}
 

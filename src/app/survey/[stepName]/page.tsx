@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
 import mainSurvey from '@/config/surveys/main-survey.json';
-import { notFound } from 'next/navigation';
-import { SurveyConfig } from '@/types/survey';
+import { notFound, redirect } from 'next/navigation';
+import { SurveyConfig, SurveyStep } from '@/types/survey';
 import SingleChoiceStep from '@/steps/SingleChoiceStep';
 import SummaryStep from '@/steps/SummaryStep';
+import styles from './page.module.scss';
+import Header from '@/components/Header';
 
 const surveyConfig = mainSurvey as SurveyConfig;
 
@@ -39,14 +41,23 @@ export default async function SurveyStepPage({ params }: Props) {
     notFound();
   }
 
-  if (step?.type === 'summary') {
-    return <SummaryStep surveyConfig={surveyConfig} />;
-  }
+  const renderStep = (step: SurveyStep) => {
+    if (step?.type === 'summary') {
+      return <SummaryStep surveyConfig={surveyConfig} />;
+    }
+
+    if (step?.type === 'single-choice') {
+      return <SingleChoiceStep step={step} />;
+    }
+
+    return redirect(`/survey/${surveyConfig.initialStep}`);
+  };
 
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
-      {/* <SurveyQuestion step={step} /> */}
-      <SingleChoiceStep step={step} />
+    <div className={styles.wrapper}>
+      <Header withBackIcon={stepName !== surveyConfig.initialStep} />
+
+      {renderStep(step)}
     </div>
   );
 }

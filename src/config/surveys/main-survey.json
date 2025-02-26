@@ -55,7 +55,7 @@
     "single-problem": {
       "id": "single-problem",
       "type": "single-choice",
-      "question": "Single {gender === 'male' ? 'Men' : 'Woman'} {single-parent === 'yes' && 'who have children'} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
+      "question": "Single {gender === 'male' ? 'men' : 'women'} {single-parent === 'yes' && 'who have children'} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
       "options": [
         {
           "id": "unhappy",
