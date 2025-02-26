@@ -26,5 +26,5 @@ export interface SurveyConfig {
 
 export interface SurveyAnswer {
   stepId: string;
-  answer: string | string[] | Date;
+  answer: string;
 }

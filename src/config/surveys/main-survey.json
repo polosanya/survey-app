@@ -343,7 +343,13 @@
           "id": "other",
           "text": "Other"
         }
-      ]
+      ],
+      "nextStep": "summary"
+    },
+    "summary": {
+      "id": "summary",
+      "type": "summary",
+      "title": "Here are your results:"
     }
   }
 }

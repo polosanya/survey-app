@@ -5,8 +5,6 @@ import { SurveyAnswer } from '@/types/survey';
 export const useTextInterpolation = () => {
   const answers = useSelector((state: RootState) => state.survey.answers);
 
-  console.log(answers);
-
   const findAnswer = (stepId: string): string | undefined => {
     return answers.find((a: SurveyAnswer) => a.stepId === stepId)
       ?.answer as string;
@@ -27,8 +25,6 @@ export const useTextInterpolation = () => {
         const [variable, operator, value] = condition.split(/\s+/);
         const answer = findAnswer(variable);
 
-        console.log(answer);
-
         // Evaluate condition
         const isTrue =
           operator === '===' && answer === value.replace(/['"]/g, '');
@@ -44,8 +40,6 @@ export const useTextInterpolation = () => {
           .map((s: string) => s.trim());
         const [variable, operator, value] = condition.split(/\s+/);
         const answer = findAnswer(variable);
-
-        console.log(answer, value);
 
         return operator === '===' && answer === value.replace(/['"]/g, '')
           ? result.replace(/['"]/g, '')
