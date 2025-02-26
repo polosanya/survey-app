@@ -10,15 +10,14 @@
       "options": [
         {
           "id": "male",
-          "text": "Male",
-          "nextStep": "status"
+          "text": "Male"
         },
         {
           "id": "female",
-          "text": "Female",
-          "nextStep": "status"
+          "text": "Female"
         }
-      ]
+      ],
+      "nextStep": "status"
     },
     "status": {
       "id": "status",
@@ -28,7 +27,7 @@
         {
           "id": "single",
           "text": "Single",
-          "nextStep": "parent"
+          "nextStep": "single-parent"
         },
         {
           "id": "relationship",
@@ -37,10 +36,10 @@
         }
       ]
     },
-    "parent": {
-      "id": "parent",
+    "single-parent": {
+      "id": "single-parent",
       "type": "single-choice",
-      "question": "Are you a {status === 'single' && 'Single'} parent?",
+      "question": "Are you a single parent?",
       "options": [
         {
           "id": "yes",
@@ -49,6 +48,300 @@
         {
           "id": "no",
           "text": "No"
+        }
+      ],
+      "nextStep": "single-problem"
+    },
+    "single-problem": {
+      "id": "single-problem",
+      "type": "single-choice",
+      "question": "Single {gender === 'male' ? 'Men' : 'Woman'} {single-parent === 'yes' && 'who have children'} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
+      "options": [
+        {
+          "id": "unhappy",
+          "text": "I was unhappy with how things were going in my relationship"
+        },
+        {
+          "id": "ok",
+          "text": "I was unhappy with parts of my relationship, but some thing were working"
+        },
+        {
+          "id": "happy",
+          "text": "I was generally happy with my relationship"
+        },
+        {
+          "id": "never",
+          "text": "I've never been in a relationship"
+        }
+      ],
+      "nextStep": "overthink"
+    },
+    "overthink": {
+      "id": "overthink",
+      "type": "single-choice",
+      "question": "Do you tend to overthink?",
+      "options": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "nextStep": "how-it-works"
+    },
+    "how-it-works": {
+      "id": "how-it-works",
+      "type": "single-choice",
+      "question": "So how does it work?",
+      "description": "We analyze hundreds of data points to create your unique astrological blueprint. This is combined with AI to tailor-make your astrological insights, based on your answers. We’re going to change your relationship with astrology.",
+      "options": [
+        {
+          "id": "okay",
+          "text": "Okay"
+        }
+      ],
+      "nextStep": "{overthink === 'yes' ? 'traits-important' : 'traits-control'}"
+    },
+    "traits-important": {
+      "id": "traits-important",
+      "type": "single-choice",
+      "question": "What is most important to you?",
+      "options": [
+        {
+          "id": "success",
+          "text": "Success"
+        },
+        {
+          "id": "romance",
+          "text": "Romance"
+        },
+        {
+          "id": "stability",
+          "text": "Stability"
+        },
+        {
+          "id": "freedom",
+          "text": "Freedom"
+        }
+      ],
+      "nextStep": "about-us"
+    },
+    "traits-control": {
+      "id": "traits-control",
+      "type": "single-choice",
+      "question": "Is emotional control tricky for you?",
+      "options": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "sometimes",
+          "text": "Sometimes"
+        },
+        {
+          "id": "rarely",
+          "text": "Rarely"
+        },
+        {
+          "id": "no",
+          "text": "Not at all"
+        }
+      ],
+      "nextStep": "about-us"
+    },
+    "parent": {
+      "id": "parent",
+      "type": "single-choice",
+      "question": "Are you a parent?",
+      "options": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "nextStep": "relationship-problem"
+    },
+    "relationship-problem": {
+      "id": "relationship-problem",
+      "type": "single-choice",
+      "question": "{gender === 'male' ? 'Men' : 'Woman'} {parent === 'yes' && 'who have children'} need a slightly different approach to improve their relationship. Which statement best describes you?",
+      "options": [
+        {
+          "id": "unhappy",
+          "text": "I am very unhappy with how things are going in my relationship"
+        },
+        {
+          "id": "ok",
+          "text": "I'm unhappy with parts of my relationship, but some thing are working well"
+        },
+        {
+          "id": "happy",
+          "text": "I'm generally happy in my relationship"
+        }
+      ],
+      "nextStep": "partner-type"
+    },
+    "partner-type": {
+      "id": "partner-type",
+      "type": "single-choice",
+      "question": "Is your partner an introvert or an extrovert?",
+      "options": [
+        {
+          "id": "introvert",
+          "text": "Introvert"
+        },
+        {
+          "id": "extrovert",
+          "text": "Extrovert"
+        },
+        {
+          "id": "both",
+          "text": "A bit of both"
+        }
+      ],
+      "nextStep": "partner-gender"
+    },
+    "partner-gender": {
+      "id": "partner-gender",
+      "type": "single-choice",
+      "question": "What is your partner's gender?",
+      "options": [
+        {
+          "id": "male",
+          "text": "Male"
+        },
+        {
+          "id": "female",
+          "text": "Female"
+        }
+      ],
+      "nextStep": "partner-priority"
+    },
+    "partner-priority": {
+      "id": "partner-priority",
+      "type": "single-choice",
+      "question": "Do you agree with the statement below?",
+      "description": "“My partner and I make sex a priority in our relationship”",
+      "options": [
+        {
+          "id": "strongly-agree",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "agree",
+          "text": "Agree"
+        },
+        {
+          "id": "neutral",
+          "text": "Neutral"
+        },
+        {
+          "id": "disagree",
+          "text": "Disagree"
+        },
+        {
+          "id": "strongly-disagree",
+          "text": "Strongly disagree"
+        }
+      ],
+      "nextStep": "relationship-goals"
+    },
+    "relationship-goals": {
+      "id": "relationship-goals",
+      "type": "single-choice",
+      "question": "When you think about your relationship goals, you feel...?",
+      "options": [
+        {
+          "id": "optimistic",
+          "text": "Optimistic! They are totally doable, with some guidance."
+        },
+        {
+          "id": "cautious",
+          "text": "Cautious. I’ve struggled before, but I’m hopeful."
+        },
+        {
+          "id": "anxious",
+          "text": "I’m feeling a little anxious, honestly."
+        }
+      ],
+      "nextStep": "about-us"
+    },
+    "about-us": {
+      "id": "about-us",
+      "type": "single-choice",
+      "question": "Where did you hear about us?",
+      "options": [
+        {
+          "id": "poster",
+          "text": "Poster or Billboard"
+        },
+        {
+          "id": "friend",
+          "text": "Friend or Family"
+        },
+        {
+          "id": "instagram",
+          "text": "Instagram"
+        },
+        {
+          "id": "mail",
+          "text": "Direct Mail or Package Insert"
+        },
+        {
+          "id": "online-tv",
+          "text": "Online TV or Streaming TV"
+        },
+        {
+          "id": "tv",
+          "text": "TV"
+        },
+        {
+          "id": "radio",
+          "text": "Radio"
+        },
+        {
+          "id": "search",
+          "text": "Search Engine (Google, Bing, etc.)"
+        },
+        {
+          "id": "newspaper",
+          "text": "Newspaper or Magazine"
+        },
+        {
+          "id": "facebook",
+          "text": "Facebook"
+        },
+        {
+          "id": "blog",
+          "text": "Blog Post or Website Review"
+        },
+        {
+          "id": "podcast",
+          "text": "Podcast"
+        },
+        {
+          "id": "influencer",
+          "text": "Influencer"
+        },
+        {
+          "id": "youtube",
+          "text": "YouTube"
+        },
+        {
+          "id": "pinterest",
+          "text": "Pinterest"
+        },
+        {
+          "id": "other",
+          "text": "Other"
         }
       ]
     }
