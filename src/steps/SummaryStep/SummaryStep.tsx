@@ -31,7 +31,7 @@ const SurveySummary = ({ surveyConfig }: { surveyConfig: SurveyConfig }) => {
 
   const handleReset = () => {
     dispatch(resetSurvey());
-    router.push(`/survey/${surveyConfig.initialStep}`);
+    router.push(`/`);
   };
 
   return (

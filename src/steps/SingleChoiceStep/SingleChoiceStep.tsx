@@ -1,5 +1,6 @@
 'use client';
 
+import cx from 'classnames';
 import { SurveyStep } from '@/types/survey';
 import styles from './SingleChoiceStep.module.scss';
 import Option from '@/components/Option';
@@ -26,9 +27,15 @@ const SingleChoiceStep = ({ step }: { step: SurveyStep }) => {
   };
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>{t(question)}</h1>
+      <h1
+        className={cx(styles.title, {
+          [styles.titleWithDescription]: description,
+        })}
+      >
+        {t(question)}
+      </h1>
 
-      {description && <h2>{t(description)}</h2>}
+      {description && <h2 className={styles.description}>{t(description)}</h2>}
 
       <div className={styles.options}>
         {options?.map((option) => (

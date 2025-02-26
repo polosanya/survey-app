@@ -5,6 +5,8 @@
   --c-text-secondary: #000000;
   --c-text-light: #6a3aa2;
   --c-white: #fbfbff;
+  --max-content-width: 360px;
+  --max-bg-width: 1200px;
 }
 
 /* @media (prefers-color-scheme: dark) {

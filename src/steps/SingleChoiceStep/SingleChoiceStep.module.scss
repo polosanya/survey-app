@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  max-width: 360px;
+  max-width: var(--max-content-width);
   padding: 20px;
   margin: 0 auto;
   flex-direction: column;
@@ -13,6 +13,17 @@
   font-size: 24px;
   font-weight: 700;
   color: var(--c-text-main);
+
+  &WithDescription {
+    text-align: center;
+  }
+}
+
+.description {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--c-text-main);
+  text-align: center;
 }
 
 .options {
