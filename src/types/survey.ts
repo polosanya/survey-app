@@ -1,4 +1,4 @@
-export type ScreenType = 'single-choice' | 'summary';
+export type ScreenType = 'single-choice' | 'summary' | 'info';
 
 export interface SurveyOption {
   id: string;

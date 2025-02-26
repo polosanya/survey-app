@@ -3,6 +3,8 @@
   --foreground: #171717;
   --c-text-main: #333333;
   --c-text-secondary: #000000;
+  --c-text-light: #6a3aa2;
+  --c-white: #fbfbff;
 }
 
 /* @media (prefers-color-scheme: dark) {

@@ -1,0 +1,41 @@
+.wrapper {
+  max-width: 360px;
+  padding: 20px;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  color: var(--c-white);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.button {
+  width: 100%;
+  font-size: 18px;
+  padding-block: 14px;
+  font-weight: 400;
+  border-radius: 12px;
+  background-color: var(--c-white);
+  color: var(--c-text-light);
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+
+  &:hover {
+    background-color: var(--c-text-light);
+    color: var(--c-white);
+  }
+}

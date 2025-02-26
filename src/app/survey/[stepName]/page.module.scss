@@ -1,1 +1,13 @@
+.wrapper {
+  height: 100vh;
 
+  &Gradient {
+    background: linear-gradient(
+      165.54deg,
+      #141333 -33.39%,
+      #202261 15.89%,
+      #543c97 55.84%,
+      #6939a2 74.96%
+    );
+  }
+}

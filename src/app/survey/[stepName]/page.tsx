@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import cx from 'classnames';
 import mainSurvey from '@/config/surveys/main-survey.json';
 import { notFound, redirect } from 'next/navigation';
 import { SurveyConfig, SurveyStep } from '@/types/survey';
@@ -6,6 +7,7 @@ import SingleChoiceStep from '@/steps/SingleChoiceStep';
 import SummaryStep from '@/steps/SummaryStep';
 import styles from './page.module.scss';
 import Header from '@/components/Header';
+import InfoStep from '@/steps/InfoStep';
 
 const surveyConfig = mainSurvey as SurveyConfig;
 
@@ -50,12 +52,23 @@ export default async function SurveyStepPage({ params }: Props) {
       return <SingleChoiceStep step={step} />;
     }
 
+    if (step?.type === 'info') {
+      return <InfoStep step={step} />;
+    }
+
     return redirect(`/survey/${surveyConfig.initialStep}`);
   };
 
   return (
-    <div className={styles.wrapper}>
-      <Header withBackIcon={stepName !== surveyConfig.initialStep} />
+    <div
+      className={cx(styles.wrapper, {
+        [styles.wrapperGradient]: step?.type === 'info',
+      })}
+    >
+      <Header
+        withBackIcon={stepName !== surveyConfig.initialStep}
+        type={step?.type === 'info' ? 'white' : 'black'}
+      />
 
       {renderStep(step)}
     </div>

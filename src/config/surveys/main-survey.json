@@ -94,13 +94,13 @@
     },
     "how-it-works": {
       "id": "how-it-works",
-      "type": "single-choice",
+      "type": "info",
       "question": "So how does it work?",
       "description": "We analyze hundreds of data points to create your unique astrological blueprint. This is combined with AI to tailor-make your astrological insights, based on your answers. We’re going to change your relationship with astrology.",
       "options": [
         {
-          "id": "okay",
-          "text": "Okay"
+          "id": "next",
+          "text": "Next"
         }
       ],
       "nextStep": "{overthink === 'yes' ? 'traits-important' : 'traits-control'}"
