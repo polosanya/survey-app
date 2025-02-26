@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import { useTextInterpolation } from '@/hooks/useTextInterpolation';
 
 const SingleChoiceStep = ({ step }: { step: SurveyStep }) => {
-  const { question, options, description = '', nextStep } = step;
+  const { question = '', options, description = '', nextStep } = step;
   const router = useRouter();
   const dispatch = useDispatch();
   const { t } = useTextInterpolation();
