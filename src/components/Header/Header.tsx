@@ -20,13 +20,13 @@ const Header = ({
   return (
     <header className={styles.header}>
       {withBackIcon && (
-        <button onClick={goBack}>
+        <button onClick={goBack} className={styles.backIcon}>
           <Image
             src={`/back_${type}.svg`}
             width={24}
             height={24}
             alt={'back'}
-            className={styles.backIcon}
+            // className={styles.backIcon}
           />
         </button>
       )}
