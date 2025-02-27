@@ -1,18 +1,24 @@
 import { Metadata } from 'next';
 import cx from 'classnames';
-import mainSurvey from '@/config/surveys/main-survey.json';
 import { notFound, redirect } from 'next/navigation';
-import { SurveyConfig, SurveyStep } from '@/types/survey';
+import { SurveyStep } from '@/types/survey';
 import SingleChoiceStep from '@/steps/SingleChoiceStep';
 import SummaryStep from '@/steps/SummaryStep';
 import styles from './page.module.scss';
 import Header from '@/components/Header';
 import InfoStep from '@/steps/InfoStep';
+import { SurveyId, SURVEYS } from '@/config/surveys';
 
-const surveyConfig = mainSurvey as SurveyConfig;
+export async function generateStaticParams({
+  params,
+}: {
+  params: Promise<{ surveyId: SurveyId }>;
+}) {
+  const { surveyId } = await params;
+  const surveyConfig = SURVEYS[surveyId];
 
-export function generateStaticParams() {
-  return [...Object.keys(surveyConfig.steps)].map((stepName) => ({
+  return Object.keys(surveyConfig?.steps || {}).map((stepName) => ({
+    surveyId,
     stepName,
   }));
 }
@@ -20,24 +26,30 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ stepName: string }>;
+  params: Promise<{ stepName: string; surveyId: SurveyId }>;
 }): Promise<Metadata> {
-  const { stepName } = await params;
+  const { stepName, surveyId } = await params;
+  const surveyConfig = SURVEYS[surveyId];
+
   const step = surveyConfig.steps[stepName];
 
   return {
-    title: `Survey - ${step?.question}` || stepName,
+    title: surveyConfig.name,
   };
 }
 
 type Props = {
-  params: Promise<{ stepName: string }>;
+  params: Promise<{ stepName: string; surveyId: SurveyId }>;
 };
 
 export default async function SurveyStepPage({ params }: Props) {
-  const { stepName } = await params;
+  const { stepName, surveyId } = await params;
 
-  const step = surveyConfig.steps[stepName];
+  const surveyConfig = SURVEYS[surveyId];
+
+  const step =
+    surveyConfig.steps[stepName] ||
+    surveyConfig.steps[surveyConfig.initialStep];
 
   if (!step) {
     notFound();
@@ -49,14 +61,14 @@ export default async function SurveyStepPage({ params }: Props) {
     }
 
     if (step?.type === 'single-choice') {
-      return <SingleChoiceStep step={step} />;
+      return <SingleChoiceStep step={step} surveyId={surveyId} />;
     }
 
     if (step?.type === 'info') {
-      return <InfoStep step={step} />;
+      return <InfoStep step={step} surveyId={surveyId} />;
     }
 
-    return redirect(`/survey/${surveyConfig.initialStep}`);
+    return redirect(`/${surveyId}/${surveyConfig.initialStep}`);
   };
 
   return (

@@ -2,9 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import surveyReducer from './surveySlice';
 
 export const store = configureStore({
-    reducer: {
-        survey: surveyReducer,
-    },
+  reducer: {
+    survey: surveyReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

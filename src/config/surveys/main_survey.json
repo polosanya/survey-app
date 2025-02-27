@@ -1,5 +1,5 @@
 {
-  "id": "main-survey",
+  "id": "main_survey",
   "name": "Main Survey",
   "initialStep": "gender",
   "steps": {

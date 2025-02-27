@@ -12,6 +12,12 @@ export const useTextInterpolation = () => {
 
   const t = (text: string): string => {
     return text.replace(/\{([^}]+)\}/g, (match: string, expression: string) => {
+      // Handle simple variable insert
+      if (!expression.includes('?') && !expression.includes('&&')) {
+        const answer = findAnswer(expression);
+        return answer || match;
+      }
+
       // Handle ternary operator
       if (expression.includes('?')) {
         const [condition, consequences] = expression

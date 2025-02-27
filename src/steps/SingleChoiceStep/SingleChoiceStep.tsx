@@ -5,11 +5,18 @@ import { SurveyStep } from '@/types/survey';
 import styles from './SingleChoiceStep.module.scss';
 import Option from '@/components/Option';
 import { useDispatch } from 'react-redux';
-import { setAnswer, setCurrentStep } from '@/store/surveySlice';
+import { setAnswer } from '@/store/surveySlice';
 import { useRouter } from 'next/navigation';
 import { useTextInterpolation } from '@/hooks/useTextInterpolation';
+import { SurveyId } from '@/config/surveys';
 
-const SingleChoiceStep = ({ step }: { step: SurveyStep }) => {
+const SingleChoiceStep = ({
+  step,
+  surveyId,
+}: {
+  step: SurveyStep;
+  surveyId: SurveyId;
+}) => {
   const { question = '', options, description = '', nextStep } = step;
   const router = useRouter();
   const dispatch = useDispatch();
@@ -21,10 +28,10 @@ const SingleChoiceStep = ({ step }: { step: SurveyStep }) => {
     const resolvedNextStep = optionNextStep || (nextStep && t(nextStep));
 
     if (resolvedNextStep) {
-      dispatch(setCurrentStep(resolvedNextStep));
-      router.push(`/survey/${resolvedNextStep}`);
+      router.push(`/${surveyId}/${resolvedNextStep}`);
     }
   };
+
   return (
     <div className={styles.wrapper}>
       <h1

@@ -95,10 +95,11 @@ a.secondary {
 .startButton {
   display: inline-block;
   padding: 16px 32px;
+  width: 100%;
   font-size: 16px;
   font-weight: 600;
   color: #000;
-  background: #EAEEF7;
+  background: #eaeef7;
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -116,7 +117,13 @@ a.secondary {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(165.54deg, #141333 -33.39%, #202261 15.89%, #543C97 55.84%, #6939A2 74.96%);
+  background: linear-gradient(
+    165.54deg,
+    #141333 -33.39%,
+    #202261 15.89%,
+    #543c97 55.84%,
+    #6939a2 74.96%
+  );
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: -1;

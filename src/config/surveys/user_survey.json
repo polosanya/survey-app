@@ -1,0 +1,97 @@
+{
+  "id": "user_survey",
+  "name": "User Preferences Survey",
+  "initialStep": "age-group",
+  "steps": {
+    "age-group": {
+      "id": "age-group",
+      "type": "single-choice",
+      "question": "Select your age group:",
+      "options": [
+        { "id": "18-24", "text": "18-24", "nextStep": "student-status" },
+        { "id": "25-34", "text": "25-34", "nextStep": "interests" },
+        { "id": "35-44", "text": "35-44", "nextStep": "interests" },
+        { "id": "45+", "text": "45+", "nextStep": "interests" }
+      ]
+    },
+    "student-status": {
+      "id": "student-status",
+      "type": "single-choice",
+      "question": "Are you currently a student?",
+      "options": [
+        { "id": "yes", "text": "Yes", "nextStep": "study-field" },
+        { "id": "no", "text": "No", "nextStep": "interests" }
+      ]
+    },
+    "study-field": {
+      "id": "study-field",
+      "type": "single-choice",
+      "question": "What is your field of study?",
+      "options": [
+        { "id": "science", "text": "Science" },
+        { "id": "arts", "text": "Arts" },
+        { "id": "business", "text": "Business" },
+        { "id": "other", "text": "Other" }
+      ],
+      "nextStep": "interests"
+    },
+    "interests": {
+      "id": "interests",
+      "type": "single-choice",
+      "question": "Which of these interests you the most?",
+      "options": [
+        { "id": "sports", "text": "Sports" },
+        { "id": "music", "text": "Music" },
+        { "id": "movies", "text": "Movies" },
+        { "id": "travel", "text": "Travel" },
+        { "id": "tech", "text": "Technology" },
+        { "id": "reading", "text": "Reading" }
+      ],
+      "nextStep": "device-usage"
+    },
+    "device-usage": {
+      "id": "device-usage",
+      "type": "single-choice",
+      "question": "Given your age ({age-group}), which device do you use most frequently?",
+      "options": [
+        { "id": "phone", "text": "Smartphone" },
+        { "id": "laptop", "text": "Laptop" },
+        { "id": "tablet", "text": "Tablet" },
+        { "id": "desktop", "text": "Desktop Computer" }
+      ],
+      "nextStep": "social-media"
+    },
+    "social-media": {
+      "id": "social-media",
+      "type": "single-choice",
+      "question": "Which social media platform do you use most?",
+      "options": [
+        { "id": "facebook", "text": "Facebook" },
+        { "id": "instagram", "text": "Instagram" },
+        { "id": "twitter", "text": "Twitter" },
+        { "id": "linkedin", "text": "LinkedIn" },
+        { "id": "tiktok", "text": "TikTok" },
+        { "id": "none", "text": "I don't use social media" }
+      ],
+      "nextStep": "notifications"
+    },
+    "notifications": {
+      "id": "notifications",
+      "type": "single-choice",
+      "question": "Do you prefer receiving notifications via email or SMS?",
+      "options": [
+        { "id": "email", "text": "Email" },
+        { "id": "sms", "text": "SMS" },
+        { "id": "both", "text": "Both" },
+        { "id": "none", "text": "No notifications" }
+      ],
+      "nextStep": "summary"
+    },
+    "summary": {
+      "id": "summary",
+      "type": "summary",
+      "title": "Survey Completed!",
+      "description": "Thank you for sharing your preferences."
+    }
+  }
+}

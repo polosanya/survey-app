@@ -4,8 +4,15 @@ import { useTextInterpolation } from '@/hooks/useTextInterpolation';
 import { SurveyStep } from '@/types/survey';
 import styles from './InfoStep.module.scss';
 import { useRouter } from 'next/navigation';
+import { SurveyId } from '@/config/surveys';
 
-const InfoStep = ({ step }: { step: SurveyStep }) => {
+const InfoStep = ({
+  step,
+  surveyId,
+}: {
+  step: SurveyStep;
+  surveyId: SurveyId;
+}) => {
   const { t } = useTextInterpolation();
   const router = useRouter();
 
@@ -15,7 +22,7 @@ const InfoStep = ({ step }: { step: SurveyStep }) => {
     const resolvedNextStep = optionNextStep || (nextStep && t(nextStep));
 
     if (resolvedNextStep) {
-      router.push(`/survey/${resolvedNextStep}`);
+      router.push(`/${surveyId}/${resolvedNextStep}`);
     }
   };
 
