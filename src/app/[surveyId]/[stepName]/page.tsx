@@ -26,12 +26,10 @@ export async function generateStaticParams({
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ stepName: string; surveyId: SurveyId }>;
+  params: Promise<{ surveyId: SurveyId }>;
 }): Promise<Metadata> {
-  const { stepName, surveyId } = await params;
+  const { surveyId } = await params;
   const surveyConfig = SURVEYS[surveyId];
-
-  const step = surveyConfig.steps[stepName];
 
   return {
     title: surveyConfig.name,
