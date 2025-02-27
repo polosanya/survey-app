@@ -9,6 +9,7 @@ export interface SurveyOption {
 export interface SurveyStep {
   id: string;
   type: ScreenType;
+  title?: string;
   question?: string;
   description?: string;
   options?: SurveyOption[];

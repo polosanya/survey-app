@@ -55,7 +55,7 @@ export default async function SurveyStepPage({ params }: Props) {
 
   const renderStep = (step: SurveyStep) => {
     if (step?.type === 'summary') {
-      return <SummaryStep surveyConfig={surveyConfig} />;
+      return <SummaryStep surveyConfig={surveyConfig} step={step} />;
     }
 
     if (step?.type === 'single-choice') {

@@ -5,10 +5,17 @@ import { useRouter } from 'next/navigation';
 import { RootState } from '@/store';
 import { resetSurvey } from '@/store/surveySlice';
 import styles from './SummaryStep.module.scss';
-import { SurveyConfig } from '@/types/survey';
+import { SurveyConfig, SurveyStep } from '@/types/survey';
 import { useTextInterpolation } from '@/hooks/useTextInterpolation';
 
-const SurveySummary = ({ surveyConfig }: { surveyConfig: SurveyConfig }) => {
+const SurveySummary = ({
+  surveyConfig,
+  step,
+}: {
+  surveyConfig: SurveyConfig;
+  step: SurveyStep;
+}) => {
+  const { title = '', description = '' } = step;
   const { t } = useTextInterpolation();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -36,7 +43,10 @@ const SurveySummary = ({ surveyConfig }: { surveyConfig: SurveyConfig }) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Survey Summary</h1>
+      <h1 className={styles.title}>{t(title)}</h1>
+
+      {description && <p className={styles.description}>{t(description)}</p>}
+
       <ul className={styles.answerList}>
         {answers.map(({ stepId, answer }) => (
           <li key={stepId} className={styles.answerItem}>
